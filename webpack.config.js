@@ -7,15 +7,27 @@ module.exports = {
   plugins: [
     new htmlWebpackPlugin({
       template: path.join(__dirname, './src/index.html'),
-      filename: 'index.html'
-    })
+      filename: 'index.html',
+    }),
   ],
   module: {
     rules: [
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
-      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(png|gif|jpg|bmp)$/, use: 'url-loader?limit=5000' }
-    ]
-  }
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: { localIdentName: '[name]-[local]-[hash:5]' },
+            },
+          },
+          { loader: 'sass-loader' },
+        ],
+      },
+      { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.(png|gif|jpg|bmp)$/, use: 'url-loader?limit=5000' },
+    ],
+  },
 }
