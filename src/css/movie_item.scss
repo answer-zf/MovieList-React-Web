@@ -1,0 +1,28 @@
+.box {
+  width: 170px;
+  padding: 6px;
+  margin: 6px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 6px #ddd;
+  transition: all 0.3s ease;
+
+  .img {
+    width: 100px;
+    height: 140px;
+    margin: 2px 0 6px;
+  }
+
+  .h4 {
+    margin-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transform: rotate(1deg) scale(1.03);
+  }
+}

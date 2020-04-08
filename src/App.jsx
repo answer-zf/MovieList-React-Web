@@ -26,25 +26,27 @@ export default class App extends React.Component {
         <Layout className="layout" style={{ height: '100%' }}>
           <Header>
             <div className={styles.logo} />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-              <Menu.Item key="1">
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              defaultSelectedKeys={window.location.hash.split('/')[1]}
+            >
+              <Menu.Item key="home">
                 <Link to="/home">Home</Link>
               </Menu.Item>
-              <Menu.Item key="2">
-                <Link to="/movie">Movie</Link>
+              <Menu.Item key="movie">
+                <Link to="/movie/in_theaters/1">Movie</Link>
               </Menu.Item>
-              <Menu.Item key="3">
+              <Menu.Item key="about">
                 <Link to="/about">About</Link>
               </Menu.Item>
             </Menu>
           </Header>
 
-          <Content>
-            <div className="site-layout-content" style={{ height: '100%' }}>
-              <Route path="/home" component={Home}></Route>
-              <Route path="/movie" component={Movie}></Route>
-              <Route path="/about" component={About}></Route>
-            </div>
+          <Content style={{ backgroundColor: '#fff' }}>
+            <Route path="/home" component={Home}></Route>
+            <Route path="/movie" component={Movie}></Route>
+            <Route path="/about" component={About}></Route>
           </Content>
 
           <Footer style={{ textAlign: 'center' }}>
